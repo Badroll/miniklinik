@@ -71,4 +71,16 @@ class PasienController extends Controller
 
         return redirect()->route('pasien.index')->with('ok', 'Data pasien dihapus.');
     }
+
+    public function kunjungan($id){
+        $pasien = Pasien::find($id);
+        if(!isset($pasien)){
+            return abort(404);
+        }
+        return response()->json([
+            'message' => 'Success',
+            'status' => true,
+            'kunjungan' => $pasien->kunjungan
+        ]);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 |   GET  /api/pasien/{id}/kunjungan  → daftar kunjungan pasien
 |   POST /api/pasien/{id}/kunjungan  → tambah kunjungan
 */
+
+Route::get('pasien/{id}/kunjungan', [PasienController::class, "kunjungan"]);
