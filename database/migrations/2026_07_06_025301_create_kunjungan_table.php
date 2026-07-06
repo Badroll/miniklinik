@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->text('keluhan');
             $table->string('diagnosis');
-            $table->decimal('biaya');
+            $table->decimal('biaya', 10, 2);
             $table->string('status');
             $table->timestamps();
         });
