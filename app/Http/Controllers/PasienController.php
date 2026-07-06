@@ -47,8 +47,12 @@ class PasienController extends Controller
     public function update(Request $request, Pasien $pasien)
     {
         $data = $request->validate([
-            // BUG SENGAJA: tidak mengecualikan id saat update — seharusnya 'unique:pasien,no_rm,'.$pasien->id
-            'no_rm'         => 'required|unique:pasien,no_rm',
+            // BUG LAMA
+            //'no_rm'         => 'required|unique:pasien,no_rm',
+
+            // PERBAIKAN BUG
+            // menambahkan kolom id pasien untuk validasi unique record dari pasien
+            'no_rm'         => 'required|unique:pasien,no_rm,'.$pasien->id,
             'nama'          => 'required',
             'tgl_lahir'     => 'nullable|date',
             'jenis_kelamin' => 'nullable|in:L,P',
