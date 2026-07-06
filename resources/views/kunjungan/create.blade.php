@@ -7,7 +7,7 @@
     <div class="col-md-7">
         <div class="card shadow-sm">
             <div class="card-header bg-primary text-white">
-                <strong>Tambah Pasien Baru</strong>
+                <strong>Tambah Kunjungan Baru</strong>
             </div>
             <div class="card-body">
                 @if($errors->any())
@@ -20,12 +20,12 @@
                     </div>
                 @endif
 
-                <form action="{{ route('pasien.store') }}" method="POST">
+                <form action="{{ route('kunjungan.store') }}" method="POST">
                     @csrf
-                    @include('pasien._form')
+                    @include('kunjungan._form')
                     <div class="d-flex gap-2 mt-3">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('pasien.index') }}" class="btn btn-secondary">Batal</a>
+                        <a href="{{ route('kunjungan.index') }}" class="btn btn-secondary">Batal</a>
                     </div>
                 </form>
             </div>

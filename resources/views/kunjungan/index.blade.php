@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Pasien')
+@section('title', 'Data Kunjungan')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -33,14 +33,15 @@
             <tbody>
                 @forelse($kunjungan as $p)
                 <tr>
-                    <td><span class="badge bg-secondary">{{ \Carbon\Carbon::parse($p->tanggal)->format('d/m/Y') }}</span></td>
+                    <td><span class="badge bg-secondary">{{ \Carbon\Carbon::parse($p->tanggal)->translatedFormat('d F Y') }}</span></td>
                     <td>{{ $p->pasien->nama }}</td>
                     <td>{{ $p->keluhan }}</td>
                     <td>{{ $p->diagnosis }}</td>
-                    <td>Rp {{ Illuminate\Support\Number::toCurrency($p->biaya, 'EUR') }}</td>
+                    <td>Rp {{ number_format($p->biaya, 2, ",", ".") }}</td>
                     <td>{{ $p->dokter->nama }}</td>
-                    <td>
+                    
                         {{-- 
+                    <td>
                         @if($p->jenis_kelamin === 'L')
                             <span class="badge bg-info text-dark">Laki-laki</span>
                         @elseif($p->jenis_kelamin === 'P')
@@ -48,8 +49,9 @@
                         @else
                             -
                         @endif
-                        --}}
                     </td>
+                    
+                        --}}
                     <td>{{ $p->status }}</td>
                     <td class="text-end">
                         <a href="{{ route('kunjungan.edit', $p) }}" class="btn btn-warning btn-sm">Edit</a>

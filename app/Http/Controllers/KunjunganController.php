@@ -18,19 +18,21 @@ class KunjunganController extends Controller
 
     public function create()
     {
-        return view('kunjungan.create');
+        $pasien = Pasien::all();
+        $dokter = Dokter::all();
+        return view('kunjungan.create', compact("pasien", "dokter"));
     }
 
     public function store(Request $request)
     {
+        //dd($request->all());
         $data = $request->validate([
             'pasien_id'     => 'required|int',
             'dokter_id'     => 'required|int',
-            'nama'          => 'required',
             'tanggal'       => 'required|date',
             'keluhan'       => 'required',
             'diagnosis'     => 'required',
-            'biaya'         => 'required|decimal',
+            'biaya'         => 'required|numeric',
             'status'        => 'required',
         ]);
 
@@ -46,19 +48,21 @@ class KunjunganController extends Controller
 
     public function edit(Kunjungan $kunjungan)
     {
-        return view('kunjungan.edit', compact('kunjungan'));
+        $pasien = Pasien::all();
+        $dokter = Dokter::all();
+        return view('kunjungan.edit', compact('kunjungan', "pasien", "dokter"));
     }
 
     public function update(Request $request, Kunjungan $kunjungan)
     {
         $data = $request->validate([
+            // pasien dan dokter harus valid (ada record nya)
             'pasien_id'     => 'required|int',
             'dokter_id'     => 'required|int',
-            'nama'          => 'required',
             'tanggal'       => 'required|date',
             'keluhan'       => 'required',
             'diagnosis'     => 'required',
-            'biaya'         => 'required|decimal',
+            'biaya'         => 'required|numeric',
             'status'        => 'required',
         ]);
 

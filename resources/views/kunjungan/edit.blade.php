@@ -7,7 +7,7 @@
     <div class="col-md-7">
         <div class="card shadow-sm">
             <div class="card-header bg-warning">
-                <strong>Edit Pasien: {{ $pasien->nama }}</strong>
+                <strong>Edit Kunjungan {{ $kunjungan->pasien->nama }}</strong>
             </div>
             <div class="card-body">
                 @if($errors->any())
@@ -20,13 +20,13 @@
                     </div>
                 @endif
 
-                <form action="{{ route('pasien.update', $pasien) }}" method="POST">
+                <form action="{{ route('kunjungan.update', $kunjungan) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('pasien._form')
+                    @include('kunjungan._form')
                     <div class="d-flex gap-2 mt-3">
                         <button type="submit" class="btn btn-warning">Perbarui</button>
-                        <a href="{{ route('pasien.index') }}" class="btn btn-secondary">Batal</a>
+                        <a href="{{ route('kunjungan.index') }}" class="btn btn-secondary">Batal</a>
                     </div>
                 </form>
             </div>

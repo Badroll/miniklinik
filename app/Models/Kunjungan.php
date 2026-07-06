@@ -9,6 +9,8 @@ class Kunjungan extends Model
     protected $table = 'kunjungan';
 
     protected $fillable = [
+        'pasien_id',
+        'dokter_id',
         'tanggal',
         'keluhan',
         'diagnosis',
