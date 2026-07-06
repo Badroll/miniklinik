@@ -16,4 +16,10 @@ class Pasien extends Model
         'alamat',
         'no_hp',
     ];
+
+    public function kunjungan()
+    {
+        return $this->hasMany(Kunjungan::class, "pasien_id", "id");
+    }
+    
 }
